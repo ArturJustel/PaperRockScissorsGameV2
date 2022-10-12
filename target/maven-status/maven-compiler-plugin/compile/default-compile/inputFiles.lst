@@ -1,0 +1,11 @@
+/home/artur/Documents/Java/PaperRockScissorsGameV2/src/main/java/com/abjust/PaperRockScissorGameExecuter.java
+/home/artur/Documents/Java/PaperRockScissorsGameV2/src/main/java/com/abjust/gamelogic/players/Player.java
+/home/artur/Documents/Java/PaperRockScissorsGameV2/src/main/java/com/abjust/helpers/InputHelper.java
+/home/artur/Documents/Java/PaperRockScissorsGameV2/src/main/java/com/abjust/gamelogic/games/Game.java
+/home/artur/Documents/Java/PaperRockScissorsGameV2/src/main/java/com/abjust/gamelogic/players/RealPlayer.java
+/home/artur/Documents/Java/PaperRockScissorsGameV2/src/main/java/com/abjust/gamelogic/handsignals/HandSignalLogic.java
+/home/artur/Documents/Java/PaperRockScissorsGameV2/src/main/java/com/abjust/gamelogic/handsignals/IHandSignals.java
+/home/artur/Documents/Java/PaperRockScissorsGameV2/src/main/java/com/abjust/gamelogic/players/BotPlayer.java
+/home/artur/Documents/Java/PaperRockScissorsGameV2/src/main/java/com/abjust/gamelogic/games/GameCore.java
+/home/artur/Documents/Java/PaperRockScissorsGameV2/src/main/java/com/abjust/helpers/Crypto.java
+/home/artur/Documents/Java/PaperRockScissorsGameV2/src/main/java/com/abjust/helpers/errormessages/ErrorMessages.java
