@@ -54,7 +54,7 @@ public class Player implements IHandSignals{
     /*
      * Gets user input with the help of {@InputHelper}
      */
-    public String getInput()
+    String getInput()
     {
         return inputHelper.getUserInput("Pick your hand signal: (Paper | Rock | Scissors)");
     }

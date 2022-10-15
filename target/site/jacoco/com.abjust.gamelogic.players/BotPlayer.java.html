@@ -5,15 +5,15 @@ import java.util.Random;
 /*
  * The following class is a subclass of {@link Player} and it is used for bot players.
  */
-<span class="nc" id="L8">public class BotPlayer extends Player {</span>
+<span class="fc" id="L8">public class BotPlayer extends Player {</span>
+<span class="fc" id="L9">    private Random random = new Random();</span>
 
     /*
      *  Modified method that let's  a bot to select a hand signal.
      */
     @Override public String pickHandSignal()
     {
-<span class="nc" id="L15">        Random random = new Random();</span>
-<span class="nc" id="L16">        return String.valueOf(random.nextInt(3)+1);</span>
+<span class="fc" id="L16">        return String.valueOf(random.nextInt(3)+1);</span>
     }
 
     /*
@@ -21,7 +21,7 @@ import java.util.Random;
      */
     public void botSays(String aSentence)
     {
-<span class="nc" id="L24">        System.out.println(aSentence);</span>
-<span class="nc" id="L25">    }</span>
+<span class="fc" id="L24">        System.out.println(aSentence);</span>
+<span class="fc" id="L25">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

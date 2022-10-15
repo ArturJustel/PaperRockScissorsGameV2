@@ -18,21 +18,25 @@ public class InputHelper {
     public String getUserInput(String aUserInput)
     {
         count++;
-        System.out.println(aUserInput);
+        botSays(aUserInput);
         String inputLine=readLine();
        
         if(inputLine.length()==0)
         {
             if(count>10)
             {
-                System.out.println(ErrorMessages.ERROR_SUSPICIOUS_BEHAVIOR);
+                botSays(ErrorMessages.ERROR_SUSPICIOUS_BEHAVIOR);
                 return null;
             }
-            System.out.println(ErrorMessages.ERROR_NO_INPUT_WAS_PROVIDED);
+            botSays(ErrorMessages.ERROR_NO_INPUT_WAS_PROVIDED);
             return getUserInput("Could you re-enter your answer?");
         }
         count=0;
-         return inputLine.toLowerCase();
+         return convertIntoLowerCase(inputLine);
+    }
+
+    String convertIntoLowerCase(String inputLine) {
+        return inputLine.toLowerCase();
     }
 
     /*

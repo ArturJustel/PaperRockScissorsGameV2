@@ -18,7 +18,7 @@ public class GameCore {
     /*
      * The following method starts the game.
      */
-    public void playTheGame()
+    public boolean playTheGame()
     {
         Crypto.setSalt();
         botPlayer.botSays("   ");
@@ -28,11 +28,11 @@ public class GameCore {
         if(playerSignal.equals("0"))
         {
             printTheWinner();
-            System.exit(0);
+            return false;
         }else if(playerSignal.equals("help"))
         {
             tellRules();
-            return;
+            return true;
         }
         int gameResult = getGameResult(playerSignal,botSignal);
 
@@ -50,6 +50,7 @@ public class GameCore {
                 botPlayer.increasePlayerScore();
             }
         printTheScore();
+        return true;
     }
 
     /*
@@ -100,26 +101,23 @@ public class GameCore {
 
     /*
      *  Gets game results (Need for better test coverage).
-     *  TODO: make package protected.
      */
-    public int getGameResult(String aPlayerSignal, String aBotSignal)
+    int getGameResult(String aPlayerSignal, String aBotSignal)
     {
        return handSignalLogic.revealSignals(aPlayerSignal,aBotSignal);
     }
 
     /*
      *  Gets player signal (Need for better test coverage).
-     *  TODO: make package protected.
      */
-    public String getPlayerSignal() {
+    String getPlayerSignal() {
         return realPlayer.pickHandSignal();
     }
 
     /*
      *  Gets bot signal (Need for better test coverage).
-     *  TODO: make package protected.
      */
-    public String getBotSignal() {
+    String getBotSignal() {
         return handSignalLogic.encryptSelection(botPlayer.pickHandSignal());
     }
 }

@@ -99,7 +99,6 @@ public class HandSignalLogic implements IHandSignals {
 
     /*
      *  Gets current salt value (Need for better test coverage).
-     *  TODO: make package protected.
      */
     public String getSalt()
     {

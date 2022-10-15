@@ -9,7 +9,7 @@ import com.abjust.helpers.Crypto;
 /*
 * The following class contains logic for hand signals.
 */
-<span class="nc" id="L12">public class HandSignalLogic implements IHandSignals {</span>
+<span class="fc" id="L12">public class HandSignalLogic implements IHandSignals {</span>
 
     private static String eSCISSORS;
     private static String eROCK;
@@ -19,17 +19,17 @@ import com.abjust.helpers.Crypto;
     * The following method compares the signals and determines which one wins.
     */
     private int compareSignals(String aUserSelection, String aBotSelection) {
-<span class="nc bnc" id="L22" title="All 2 branches missed.">        if(!(encryptSelection(aUserSelection).equals(aBotSelection))){</span>
-<span class="nc bnc" id="L23" title="All 4 branches missed.">        switch (aUserSelection) {</span>
+<span class="fc bfc" id="L22" title="All 2 branches covered.">        if(!(encryptSelection(aUserSelection).equals(aBotSelection))){</span>
+<span class="fc bfc" id="L23" title="All 4 branches covered.">        switch (aUserSelection) {</span>
             case ROCK_VALUE:
-<span class="nc bnc" id="L25" title="All 2 branches missed.">                return (aBotSelection.equals(eSCISSORS) ? 1 : -1);</span>
+<span class="pc bpc" id="L25" title="1 of 2 branches missed.">                return (aBotSelection.equals(eSCISSORS) ? 1 : -1);</span>
             case PAPER_VALUE:
-<span class="nc bnc" id="L27" title="All 2 branches missed.">                return (aBotSelection.equals(eROCK) ? 1 : -1);</span>
+<span class="fc bfc" id="L27" title="All 2 branches covered.">                return (aBotSelection.equals(eROCK) ? 1 : -1);</span>
             case SCISSORS_VALUE:
-<span class="nc bnc" id="L29" title="All 2 branches missed.">                return (aBotSelection.equals(ePAPER) ? 1 : -1);</span>
+<span class="pc bpc" id="L29" title="1 of 2 branches missed.">                return (aBotSelection.equals(ePAPER) ? 1 : -1);</span>
         }
     }
-<span class="nc" id="L32">        return 0;</span>
+<span class="fc" id="L32">        return 0;</span>
     }
 
     /*
@@ -37,15 +37,15 @@ import com.abjust.helpers.Crypto;
     */
     private String getAnswer(String aSelection)
     {
-<span class="nc bnc" id="L40" title="All 4 branches missed.">        if(aSelection.equals(eSCISSORS)||aSelection.equals(SCISSORS_VALUE))</span>
+<span class="pc bpc" id="L40" title="1 of 4 branches missed.">        if(aSelection.equals(eSCISSORS)||aSelection.equals(SCISSORS_VALUE))</span>
         {
-<span class="nc" id="L42">            return SCISSORS_LABEL;</span>
-<span class="nc bnc" id="L43" title="All 4 branches missed.">        }else if(aSelection.equals(eROCK)||aSelection.equals(ROCK_VALUE))</span>
+<span class="fc" id="L42">            return SCISSORS_LABEL;</span>
+<span class="pc bpc" id="L43" title="1 of 4 branches missed.">        }else if(aSelection.equals(eROCK)||aSelection.equals(ROCK_VALUE))</span>
         {
-<span class="nc" id="L45">            return ROCK_LABEL;</span>
-<span class="nc bnc" id="L46" title="All 4 branches missed.">        }else if(aSelection.equals(ePAPER)||aSelection.equals(PAPER_VALUE))</span>
+<span class="fc" id="L45">            return ROCK_LABEL;</span>
+<span class="pc bpc" id="L46" title="3 of 4 branches missed.">        }else if(aSelection.equals(ePAPER)||aSelection.equals(PAPER_VALUE))</span>
         {
-<span class="nc" id="L48">            return PAPER_LABEL;</span>
+<span class="fc" id="L48">            return PAPER_LABEL;</span>
         }
 <span class="nc" id="L50">        return null; // Never will be reached</span>
     }
@@ -55,13 +55,13 @@ import com.abjust.helpers.Crypto;
     */
     public int revealSignals(String aPlayerSignal, String aBotSignal)
     {
-<span class="nc" id="L58">        regenerate();</span>
-<span class="nc" id="L59">        System.out.println(&quot;You decided to use &quot;+getAnswer(aPlayerSignal)+&quot; and I still used &quot;+aBotSignal);</span>
-<span class="nc" id="L60">        System.out.println(&quot;You can check that I wasn't cheating, if you don't trust me. The salt in this game was &quot;+getSalt());</span>
-<span class="nc" id="L61">        System.out.println(&quot;Let's reveal our hand signals&quot;);</span>
-<span class="nc" id="L62">        System.out.println(&quot;You had &quot;+getAnswer(aPlayerSignal)+&quot; and I had &quot;+getAnswer(aBotSignal));</span>
+<span class="fc" id="L58">        regenerate();</span>
+<span class="fc" id="L59">        System.out.println(&quot;You decided to use &quot;+getAnswer(aPlayerSignal)+&quot; and I still used &quot;+aBotSignal);</span>
+<span class="fc" id="L60">        System.out.println(&quot;You can check that I wasn't cheating, if you don't trust me. The salt in this game was &quot;+getSalt());</span>
+<span class="fc" id="L61">        System.out.println(&quot;Let's reveal our hand signals&quot;);</span>
+<span class="fc" id="L62">        System.out.println(&quot;You had &quot;+getAnswer(aPlayerSignal)+&quot; and I had &quot;+getAnswer(aBotSignal));</span>
 
-<span class="nc" id="L64">        return compareSignals(aPlayerSignal, aBotSignal);</span>
+<span class="fc" id="L64">        return compareSignals(aPlayerSignal, aBotSignal);</span>
         
     }
 
@@ -70,20 +70,20 @@ import com.abjust.helpers.Crypto;
     */
     public String encryptSelection(String aSignal)
     {
-<span class="nc" id="L73">            String encryptedSignal= null;</span>
+<span class="fc" id="L73">            String encryptedSignal= null;</span>
             try {
-<span class="nc" id="L75">                MessageDigest md = MessageDigest.getInstance(&quot;SHA-512&quot;);</span>
-<span class="nc" id="L76">                md.update(getSalt().getBytes(StandardCharsets.UTF_8));</span>
-<span class="nc" id="L77">                byte[] bytes = md.digest(aSignal.getBytes(StandardCharsets.UTF_8));</span>
-<span class="nc" id="L78">                StringBuilder sb = new StringBuilder();</span>
-<span class="nc bnc" id="L79" title="All 2 branches missed.">                for(int i=0; i&lt; bytes.length ;i++){</span>
-<span class="nc" id="L80">                    sb.append(Integer.toString((bytes[i] &amp; 0xff) + 0x100, 16).substring(1));</span>
+<span class="fc" id="L75">                MessageDigest md = MessageDigest.getInstance(&quot;SHA-512&quot;);</span>
+<span class="fc" id="L76">                md.update(getSalt().getBytes(StandardCharsets.UTF_8));</span>
+<span class="fc" id="L77">                byte[] bytes = md.digest(aSignal.getBytes(StandardCharsets.UTF_8));</span>
+<span class="fc" id="L78">                StringBuilder sb = new StringBuilder();</span>
+<span class="fc bfc" id="L79" title="All 2 branches covered.">                for(int i=0; i&lt; bytes.length ;i++){</span>
+<span class="fc" id="L80">                    sb.append(Integer.toString((bytes[i] &amp; 0xff) + 0x100, 16).substring(1));</span>
                 }
-<span class="nc" id="L82">                encryptedSignal = sb.toString();</span>
-<span class="nc" id="L83">            } catch (NoSuchAlgorithmException e) {</span>
+<span class="fc" id="L82">                encryptedSignal = sb.toString();</span>
+<span class="pc" id="L83">            } catch (NoSuchAlgorithmException e) {</span>
 <span class="nc" id="L84">                e.printStackTrace();</span>
             }
-<span class="nc" id="L86">            return encryptedSignal;</span>
+<span class="fc" id="L86">            return encryptedSignal;</span>
     }
 
     /*
@@ -91,19 +91,18 @@ import com.abjust.helpers.Crypto;
     */
     private void regenerate()
     {
-<span class="nc" id="L94">        eSCISSORS = encryptSelection(SCISSORS_VALUE);</span>
-<span class="nc" id="L95">        eROCK = encryptSelection(ROCK_VALUE);</span>
-<span class="nc" id="L96">        ePAPER = encryptSelection(PAPER_VALUE);</span>
-<span class="nc" id="L97">    }</span>
+<span class="fc" id="L94">        eSCISSORS = encryptSelection(SCISSORS_VALUE);</span>
+<span class="fc" id="L95">        eROCK = encryptSelection(ROCK_VALUE);</span>
+<span class="fc" id="L96">        ePAPER = encryptSelection(PAPER_VALUE);</span>
+<span class="fc" id="L97">    }</span>
 
 
     /*
      *  Gets current salt value (Need for better test coverage).
-     *  TODO: make package protected.
      */
     public String getSalt()
     {
-<span class="nc" id="L106">        return Crypto.getSalt();</span>
+<span class="fc" id="L105">        return Crypto.getSalt();</span>
     }
     
 }

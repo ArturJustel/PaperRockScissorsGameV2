@@ -9,30 +9,34 @@ import com.abjust.helpers.errormessages.ErrorMessages;
 /*
  *  The following helper class contains all necessary methods that help to process the user input. 
  */
-<span class="nc" id="L12">public class InputHelper {</span>
-<span class="nc" id="L13">    int count=0;</span>
+<span class="fc" id="L12">public class InputHelper {</span>
+<span class="fc" id="L13">    int count=0;</span>
 
     /*
      *  The following method obtains user input from the keyboard and returns it as a String.
      */
     public String getUserInput(String aUserInput)
     {
-<span class="nc" id="L20">        count++;</span>
-<span class="nc" id="L21">        System.out.println(aUserInput);</span>
-<span class="nc" id="L22">        String inputLine=readLine();</span>
+<span class="fc" id="L20">        count++;</span>
+<span class="fc" id="L21">        botSays(aUserInput);</span>
+<span class="fc" id="L22">        String inputLine=readLine();</span>
        
-<span class="nc bnc" id="L24" title="All 2 branches missed.">        if(inputLine.length()==0)</span>
+<span class="fc bfc" id="L24" title="All 2 branches covered.">        if(inputLine.length()==0)</span>
         {
-<span class="nc bnc" id="L26" title="All 2 branches missed.">            if(count&gt;10)</span>
+<span class="fc bfc" id="L26" title="All 2 branches covered.">            if(count&gt;10)</span>
             {
-<span class="nc" id="L28">                System.out.println(ErrorMessages.ERROR_SUSPICIOUS_BEHAVIOR);</span>
-<span class="nc" id="L29">                return null;</span>
+<span class="fc" id="L28">                botSays(ErrorMessages.ERROR_SUSPICIOUS_BEHAVIOR);</span>
+<span class="fc" id="L29">                return null;</span>
             }
-<span class="nc" id="L31">            System.out.println(ErrorMessages.ERROR_NO_INPUT_WAS_PROVIDED);</span>
-<span class="nc" id="L32">            return getUserInput(&quot;Could you re-enter your answer?&quot;);</span>
+<span class="fc" id="L31">            botSays(ErrorMessages.ERROR_NO_INPUT_WAS_PROVIDED);</span>
+<span class="fc" id="L32">            return getUserInput(&quot;Could you re-enter your answer?&quot;);</span>
         }
-<span class="nc" id="L34">        count=0;</span>
-<span class="nc" id="L35">         return inputLine.toLowerCase();</span>
+<span class="fc" id="L34">        count=0;</span>
+<span class="fc" id="L35">         return convertIntoLowerCase(inputLine);</span>
+    }
+
+    String convertIntoLowerCase(String inputLine) {
+<span class="fc" id="L39">        return inputLine.toLowerCase();</span>
     }
 
     /*
@@ -40,18 +44,18 @@ import com.abjust.helpers.errormessages.ErrorMessages;
      */
     public void botSays(String aSentence)
     {
-<span class="nc" id="L43">        System.out.println(aSentence);</span>
-<span class="nc" id="L44">    }</span>
+<span class="fc" id="L47">        System.out.println(aSentence);</span>
+<span class="fc" id="L48">    }</span>
 
     public String readLine()
     {
         try {
-<span class="nc" id="L49">        BufferedReader is = new BufferedReader(new InputStreamReader(System.in));</span>
-<span class="nc" id="L50">            return is.readLine();</span>
-<span class="nc" id="L51">        } catch (IOException e) {</span>
-<span class="nc" id="L52">            e.printStackTrace();</span>
+<span class="nc" id="L53">        BufferedReader is = new BufferedReader(new InputStreamReader(System.in));</span>
+<span class="nc" id="L54">            return is.readLine();</span>
+<span class="nc" id="L55">        } catch (IOException e) {</span>
+<span class="nc" id="L56">            e.printStackTrace();</span>
         }
-<span class="nc" id="L54">        return null;</span>
+<span class="nc" id="L58">        return null;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
