@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.abjust.gamelogic.games.GameCoreTest" time="0.282" tests="4" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="sun.desktop" value="gnome"/>
+    <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
+    <property name="java.specification.version" value="11"/>
+    <property name="sun.cpu.isalist" value=""/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/home/artur/Documents/Java/PaperRockScissorsGameV2/target/test-classes:/home/artur/Documents/Java/PaperRockScissorsGameV2/target/classes:/home/artur/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.4.2/junit-jupiter-api-5.4.2.jar:/home/artur/.m2/repository/org/apiguardian/apiguardian-api/1.0.0/apiguardian-api-1.0.0.jar:/home/artur/.m2/repository/org/opentest4j/opentest4j/1.1.1/opentest4j-1.1.1.jar:/home/artur/.m2/repository/org/junit/platform/junit-platform-commons/1.4.2/junit-platform-commons-1.4.2.jar:/home/artur/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.4.2/junit-jupiter-engine-5.4.2.jar:/home/artur/.m2/repository/org/junit/platform/junit-platform-engine/1.4.2/junit-platform-engine-1.4.2.jar:/home/artur/.m2/repository/org/mockito/mockito-junit-jupiter/4.6.1/mockito-junit-jupiter-4.6.1.jar:/home/artur/.m2/repository/org/mockito/mockito-core/4.6.1/mockito-core-4.6.1.jar:/home/artur/.m2/repository/net/bytebuddy/byte-buddy/1.12.10/byte-buddy-1.12.10.jar:/home/artur/.m2/repository/net/bytebuddy/byte-buddy-agent/1.12.10/byte-buddy-agent-1.12.10.jar:/home/artur/.m2/repository/org/objenesis/objenesis/3.2/objenesis-3.2.jar:"/>
+    <property name="java.vm.vendor" value="Ubuntu"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://ubuntu.com/"/>
+    <property name="user.timezone" value=""/>
+    <property name="java.vm.specification.version" value="11"/>
+    <property name="os.name" value="Linux"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-11-openjdk-amd64/lib"/>
+    <property name="sun.java.command" value="/home/artur/Documents/Java/PaperRockScissorsGameV2/target/surefire/surefirebooter-20221015163955847_3.jar /home/artur/Documents/Java/PaperRockScissorsGameV2/target/surefire 2022-10-15T16-39-55_131-jvmRun1 surefire-20221015163955847_1tmp surefire_0-20221015163955847_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/home/artur/Documents/Java/PaperRockScissorsGameV2/target/test-classes:/home/artur/Documents/Java/PaperRockScissorsGameV2/target/classes:/home/artur/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.4.2/junit-jupiter-api-5.4.2.jar:/home/artur/.m2/repository/org/apiguardian/apiguardian-api/1.0.0/apiguardian-api-1.0.0.jar:/home/artur/.m2/repository/org/opentest4j/opentest4j/1.1.1/opentest4j-1.1.1.jar:/home/artur/.m2/repository/org/junit/platform/junit-platform-commons/1.4.2/junit-platform-commons-1.4.2.jar:/home/artur/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.4.2/junit-jupiter-engine-5.4.2.jar:/home/artur/.m2/repository/org/junit/platform/junit-platform-engine/1.4.2/junit-platform-engine-1.4.2.jar:/home/artur/.m2/repository/org/mockito/mockito-junit-jupiter/4.6.1/mockito-junit-jupiter-4.6.1.jar:/home/artur/.m2/repository/org/mockito/mockito-core/4.6.1/mockito-core-4.6.1.jar:/home/artur/.m2/repository/net/bytebuddy/byte-buddy/1.12.10/byte-buddy-1.12.10.jar:/home/artur/.m2/repository/net/bytebuddy/byte-buddy-agent/1.12.10/byte-buddy-agent-1.12.10.jar:/home/artur/.m2/repository/org/objenesis/objenesis/3.2/objenesis-3.2.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/home/artur"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2022-07-19"/>
+    <property name="java.home" value="/usr/lib/jvm/java-11-openjdk-amd64"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/home/artur/Documents/Java/PaperRockScissorsGameV2"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="/home/artur/Documents/Java/PaperRockScissorsGameV2/target/surefire/surefirebooter-20221015163955847_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="11.0.16+8-post-Ubuntu-0ubuntu122.04"/>
+    <property name="user.name" value="artur"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="5.15.0-50-generic"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="localRepository" value="/home/artur/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://bugs.launchpad.net/ubuntu/+source/openjdk-lts"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="java.version" value="11.0.16"/>
+    <property name="user.dir" value="/home/artur/Documents/Java/PaperRockScissorsGameV2"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.vendor" value="Ubuntu"/>
+    <property name="java.vm.version" value="11.0.16+8-post-Ubuntu-0ubuntu122.04"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="55.0"/>
+  </properties>
+  <testcase name="testHelp" classname="com.abjust.gamelogic.games.GameCoreTest" time="0.216">
+    <system-out><![CDATA[   
+I have made my choice and it is this 2
+The game is simple. You and I will pick one of three hand signals (Paper,Rock or Scissors) at the same time.
+Then we will revile our selected signal and see who wins
+The winner is determined as following:
+Paper beats (wraps) rock
+Rock beats (blunts) scissors 
+Scissors beats (cuts) paper
+ 
+I hope that now you understand the game. Now let's play!
+]]></system-out>
+  </testcase>
+  <testcase name="testBotWins" classname="com.abjust.gamelogic.games.GameCoreTest" time="0.012">
+    <system-out><![CDATA[   
+I have made my choice and it is this 2
+Yay I got a point
+   
+You managed to win 0 times and I won 1 times
+]]></system-out>
+  </testcase>
+  <testcase name="testExitTheGame" classname="com.abjust.gamelogic.games.GameCoreTest" time="0.011">
+    <system-out><![CDATA[   
+I have made my choice and it is this 2
+I beat you this time but don't worry you can always try again!
+]]></system-out>
+  </testcase>
+  <testcase name="testPlayerWins" classname="com.abjust.gamelogic.games.GameCoreTest" time="0.011">
+    <system-out><![CDATA[   
+I have made my choice and it is this 1
+Wow you got a point
+   
+You managed to win 1 times and I won 1 times
+]]></system-out>
+  </testcase>
+</testsuite>
