@@ -1,6 +1,9 @@
 package com.abjust;
 
 import com.abjust.gamelogic.games.Game;
+import com.abjust.gamelogic.handsignals.HandSignalLogic;
+import com.abjust.gamelogic.players.BotPlayer;
+import com.abjust.gamelogic.players.RealPlayer;
 import com.abjust.helpers.InputHelper;
 
 /*
@@ -12,6 +15,7 @@ public class PaperRockScissorGameExecuter
     public static void main(String[] args) {
         Game gameLogic = new Game();
         intro();
+        gameLogic.setupTheGame(new HandSignalLogic(), new RealPlayer(), new BotPlayer());
         gameLogic.playTheGame();
     }
 

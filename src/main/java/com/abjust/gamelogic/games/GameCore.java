@@ -9,10 +9,24 @@ import com.abjust.helpers.Crypto;
 * The following class contains the core of the game.
 */
 public class GameCore {
-    private final RealPlayer realPlayer = new RealPlayer();
-    private final static BotPlayer botPlayer = new BotPlayer();
-    private final HandSignalLogic handSignalLogic = new HandSignalLogic();
+    private RealPlayer realPlayer;
+    private BotPlayer botPlayer;
+    private HandSignalLogic handSignalLogic;
     
+
+    /**
+     * The following method setups the game.
+     * 
+     * @param aHandSignalLogic
+     * @param aRealPlayer
+     * @param aBotPlayer
+     */
+    public void setupTheGame(HandSignalLogic aHandSignalLogic,RealPlayer aRealPlayer, BotPlayer aBotPlayer)
+    {
+        this.handSignalLogic = aHandSignalLogic;
+        this.realPlayer = aRealPlayer;
+        this.botPlayer = aBotPlayer;
+    }
 
     
     /*
@@ -22,9 +36,9 @@ public class GameCore {
     {
         Crypto.setSalt();
         botPlayer.botSays("   ");
-        String botSignal = getBotSignal();
+        String botSignal = handSignalLogic.encryptSelection(botPlayer.pickHandSignal());
         botPlayer.botSays("I have made my choice and it is this "+botSignal);
-        String playerSignal = getPlayerSignal();
+        String playerSignal = realPlayer.pickHandSignal();
         if(playerSignal.equals("0"))
         {
             printTheWinner();
@@ -34,7 +48,7 @@ public class GameCore {
             tellRules();
             return true;
         }
-        int gameResult = getGameResult(playerSignal,botSignal);
+        int gameResult = handSignalLogic.revealSignals(playerSignal,botSignal);
 
             if(gameResult==0)
             {
@@ -56,7 +70,7 @@ public class GameCore {
     /*
      * The following method prints the score to the user.
      */
-    private void printTheScore()
+    void printTheScore()
     {
         botPlayer.botSays("   ");
         int playerScore = realPlayer.getPlayerScore();
@@ -88,7 +102,7 @@ public class GameCore {
         /*
      * The following method introduces the game rules to the user.
      */
-    private static void tellRules() {
+    private void tellRules() {
         botPlayer.botSays("The game is simple. You and I will pick one of three hand signals (Paper,Rock or Scissors) at the same time.");
         botPlayer.botSays("Then we will revile our selected signal and see who wins");
         botPlayer.botSays("The winner is determined as following:");
@@ -97,27 +111,5 @@ public class GameCore {
         botPlayer.botSays("Scissors beats (cuts) paper");
         botPlayer.botSays(" ");
         botPlayer.botSays("I hope that now you understand the game. Now let's play!");
-    }
-
-    /*
-     *  Gets game results (Need for better test coverage).
-     */
-    int getGameResult(String aPlayerSignal, String aBotSignal)
-    {
-       return handSignalLogic.revealSignals(aPlayerSignal,aBotSignal);
-    }
-
-    /*
-     *  Gets player signal (Need for better test coverage).
-     */
-    String getPlayerSignal() {
-        return realPlayer.pickHandSignal();
-    }
-
-    /*
-     *  Gets bot signal (Need for better test coverage).
-     */
-    String getBotSignal() {
-        return handSignalLogic.encryptSelection(botPlayer.pickHandSignal());
     }
 }

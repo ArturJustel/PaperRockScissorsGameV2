@@ -1,5 +1,6 @@
 /home/artur/Documents/Java/PaperRockScissorsGameV2/src/test/java/com/abjust/gamelogic/players/BotPlayerTest.java
 /home/artur/Documents/Java/PaperRockScissorsGameV2/src/test/java/com/abjust/gamelogic/players/PlayerTest.java
+/home/artur/Documents/Java/PaperRockScissorsGameV2/src/test/java/com/abjust/gamelogic/games/GameTest.java
 /home/artur/Documents/Java/PaperRockScissorsGameV2/src/test/java/com/abjust/helpers/InputHelperTest.java
 /home/artur/Documents/Java/PaperRockScissorsGameV2/src/test/java/com/abjust/gamelogic/handsignals/HandSignalLogicTest.java
 /home/artur/Documents/Java/PaperRockScissorsGameV2/src/test/java/com/abjust/gamelogic/games/GameCoreTest.java

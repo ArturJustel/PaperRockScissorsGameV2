@@ -9,10 +9,24 @@ import com.abjust.helpers.Crypto;
 * The following class contains the core of the game.
 */
 <span class="fc" id="L11">public class GameCore {</span>
-<span class="fc" id="L12">    private final RealPlayer realPlayer = new RealPlayer();</span>
-<span class="fc" id="L13">    private final static BotPlayer botPlayer = new BotPlayer();</span>
-<span class="fc" id="L14">    private final HandSignalLogic handSignalLogic = new HandSignalLogic();</span>
+    private RealPlayer realPlayer;
+    private BotPlayer botPlayer;
+    private HandSignalLogic handSignalLogic;
     
+
+    /**
+     * The following method setups the game.
+     * 
+     * @param aHandSignalLogic
+     * @param aRealPlayer
+     * @param aBotPlayer
+     */
+    public void setupTheGame(HandSignalLogic aHandSignalLogic,RealPlayer aRealPlayer, BotPlayer aBotPlayer)
+    {
+<span class="fc" id="L26">        this.handSignalLogic = aHandSignalLogic;</span>
+<span class="fc" id="L27">        this.realPlayer = aRealPlayer;</span>
+<span class="fc" id="L28">        this.botPlayer = aBotPlayer;</span>
+<span class="fc" id="L29">    }</span>
 
     
     /*
@@ -20,105 +34,83 @@ import com.abjust.helpers.Crypto;
      */
     public boolean playTheGame()
     {
-<span class="fc" id="L23">        Crypto.setSalt();</span>
-<span class="fc" id="L24">        botPlayer.botSays(&quot;   &quot;);</span>
-<span class="fc" id="L25">        String botSignal = getBotSignal();</span>
-<span class="fc" id="L26">        botPlayer.botSays(&quot;I have made my choice and it is this &quot;+botSignal);</span>
-<span class="fc" id="L27">        String playerSignal = getPlayerSignal();</span>
-<span class="fc bfc" id="L28" title="All 2 branches covered.">        if(playerSignal.equals(&quot;0&quot;))</span>
+<span class="fc" id="L37">        Crypto.setSalt();</span>
+<span class="fc" id="L38">        botPlayer.botSays(&quot;   &quot;);</span>
+<span class="fc" id="L39">        String botSignal = handSignalLogic.encryptSelection(botPlayer.pickHandSignal());</span>
+<span class="fc" id="L40">        botPlayer.botSays(&quot;I have made my choice and it is this &quot;+botSignal);</span>
+<span class="fc" id="L41">        String playerSignal = realPlayer.pickHandSignal();</span>
+<span class="fc bfc" id="L42" title="All 2 branches covered.">        if(playerSignal.equals(&quot;0&quot;))</span>
         {
-<span class="fc" id="L30">            printTheWinner();</span>
-<span class="fc" id="L31">            return false;</span>
-<span class="fc bfc" id="L32" title="All 2 branches covered.">        }else if(playerSignal.equals(&quot;help&quot;))</span>
+<span class="fc" id="L44">            printTheWinner();</span>
+<span class="fc" id="L45">            return false;</span>
+<span class="fc bfc" id="L46" title="All 2 branches covered.">        }else if(playerSignal.equals(&quot;help&quot;))</span>
         {
-<span class="fc" id="L34">            tellRules();</span>
-<span class="fc" id="L35">            return true;</span>
+<span class="fc" id="L48">            tellRules();</span>
+<span class="fc" id="L49">            return true;</span>
         }
-<span class="fc" id="L37">        int gameResult = getGameResult(playerSignal,botSignal);</span>
+<span class="fc" id="L51">        int gameResult = handSignalLogic.revealSignals(playerSignal,botSignal);</span>
 
-<span class="pc bpc" id="L39" title="1 of 2 branches missed.">            if(gameResult==0)</span>
+<span class="pc bpc" id="L53" title="1 of 2 branches missed.">            if(gameResult==0)</span>
             {
-<span class="nc" id="L41">                botPlayer.botSays(&quot;It looks that we have the same, let's replay&quot;);</span>
-<span class="nc" id="L42">                playTheGame();</span>
-<span class="pc bfc" id="L43" title="All 2 branches covered.">            }else if(gameResult==1)</span>
+<span class="nc" id="L55">                botPlayer.botSays(&quot;It looks that we have the same, let's replay&quot;);</span>
+<span class="nc" id="L56">                playTheGame();</span>
+<span class="pc bfc" id="L57" title="All 2 branches covered.">            }else if(gameResult==1)</span>
             {
-<span class="fc" id="L45">                botPlayer.botSays(&quot;Wow you got a point&quot;);</span>
-<span class="fc" id="L46">                realPlayer.increasePlayerScore();</span>
-<span class="fc" id="L47">            }else</span>
+<span class="fc" id="L59">                botPlayer.botSays(&quot;Wow you got a point&quot;);</span>
+<span class="fc" id="L60">                realPlayer.increasePlayerScore();</span>
+<span class="fc" id="L61">            }else</span>
             {
-<span class="fc" id="L49">                botPlayer.botSays(&quot;Yay I got a point&quot;);</span>
-<span class="fc" id="L50">                botPlayer.increasePlayerScore();</span>
+<span class="fc" id="L63">                botPlayer.botSays(&quot;Yay I got a point&quot;);</span>
+<span class="fc" id="L64">                botPlayer.increasePlayerScore();</span>
             }
-<span class="fc" id="L52">        printTheScore();</span>
-<span class="fc" id="L53">        return true;</span>
+<span class="fc" id="L66">        printTheScore();</span>
+<span class="fc" id="L67">        return true;</span>
     }
 
     /*
      * The following method prints the score to the user.
      */
-    private void printTheScore()
+    void printTheScore()
     {
-<span class="fc" id="L61">        botPlayer.botSays(&quot;   &quot;);</span>
-<span class="fc" id="L62">        int playerScore = realPlayer.getPlayerScore();</span>
-<span class="fc" id="L63">        int botScore = botPlayer.getPlayerScore();</span>
-<span class="fc" id="L64">        botPlayer.botSays(&quot;You managed to win &quot;+playerScore+&quot; times and I won &quot;+botScore+&quot; times&quot;);</span>
-<span class="fc" id="L65">    }</span>
+<span class="fc" id="L75">        botPlayer.botSays(&quot;   &quot;);</span>
+<span class="fc" id="L76">        int playerScore = realPlayer.getPlayerScore();</span>
+<span class="fc" id="L77">        int botScore = botPlayer.getPlayerScore();</span>
+<span class="fc" id="L78">        botPlayer.botSays(&quot;You managed to win &quot;+playerScore+&quot; times and I won &quot;+botScore+&quot; times&quot;);</span>
+<span class="fc" id="L79">    }</span>
 
     /*
      * The following method shows the game winner to the user.
      */
     public void printTheWinner()
     {
-<span class="fc" id="L72">        int playerScore = realPlayer.getPlayerScore();</span>
-<span class="fc" id="L73">        int botScore = botPlayer.getPlayerScore();</span>
-<span class="pc bpc" id="L74" title="1 of 2 branches missed.">        if(playerScore==botScore)</span>
+<span class="fc" id="L86">        int playerScore = realPlayer.getPlayerScore();</span>
+<span class="fc" id="L87">        int botScore = botPlayer.getPlayerScore();</span>
+<span class="fc bfc" id="L88" title="All 2 branches covered.">        if(playerScore==botScore)</span>
         {
-<span class="nc" id="L76">            botPlayer.botSays(&quot;It seems that both of us are good in this game!&quot;);</span>
-<span class="nc" id="L77">        }</span>
-<span class="pc bpc" id="L78" title="1 of 2 branches missed.">        else if(playerScore&gt;botScore)</span>
+<span class="fc" id="L90">            botPlayer.botSays(&quot;It seems that both of us are good in this game!&quot;);</span>
+<span class="fc" id="L91">        }</span>
+<span class="fc bfc" id="L92" title="All 2 branches covered.">        else if(playerScore&gt;botScore)</span>
         {
-<span class="nc" id="L80">            botPlayer.botSays(&quot;Looks like you managed to beat me this time!&quot;);</span>
+<span class="fc" id="L94">            botPlayer.botSays(&quot;Looks like you managed to beat me this time!&quot;);</span>
             
-<span class="nc" id="L82">        }else</span>
+<span class="fc" id="L96">        }else</span>
         {
-<span class="fc" id="L84">            botPlayer.botSays(&quot;I beat you this time but don't worry you can always try again!&quot;);</span>
+<span class="fc" id="L98">            botPlayer.botSays(&quot;I beat you this time but don't worry you can always try again!&quot;);</span>
         }
-<span class="fc" id="L86">    }</span>
+<span class="fc" id="L100">    }</span>
 
         /*
      * The following method introduces the game rules to the user.
      */
-    private static void tellRules() {
-<span class="fc" id="L92">        botPlayer.botSays(&quot;The game is simple. You and I will pick one of three hand signals (Paper,Rock or Scissors) at the same time.&quot;);</span>
-<span class="fc" id="L93">        botPlayer.botSays(&quot;Then we will revile our selected signal and see who wins&quot;);</span>
-<span class="fc" id="L94">        botPlayer.botSays(&quot;The winner is determined as following:&quot;);</span>
-<span class="fc" id="L95">        botPlayer.botSays(&quot;Paper beats (wraps) rock&quot;);</span>
-<span class="fc" id="L96">        botPlayer.botSays(&quot;Rock beats (blunts) scissors &quot;);</span>
-<span class="fc" id="L97">        botPlayer.botSays(&quot;Scissors beats (cuts) paper&quot;);</span>
-<span class="fc" id="L98">        botPlayer.botSays(&quot; &quot;);</span>
-<span class="fc" id="L99">        botPlayer.botSays(&quot;I hope that now you understand the game. Now let's play!&quot;);</span>
-<span class="fc" id="L100">    }</span>
-
-    /*
-     *  Gets game results (Need for better test coverage).
-     */
-    int getGameResult(String aPlayerSignal, String aBotSignal)
-    {
-<span class="nc" id="L107">       return handSignalLogic.revealSignals(aPlayerSignal,aBotSignal);</span>
-    }
-
-    /*
-     *  Gets player signal (Need for better test coverage).
-     */
-    String getPlayerSignal() {
-<span class="nc" id="L114">        return realPlayer.pickHandSignal();</span>
-    }
-
-    /*
-     *  Gets bot signal (Need for better test coverage).
-     */
-    String getBotSignal() {
-<span class="nc" id="L121">        return handSignalLogic.encryptSelection(botPlayer.pickHandSignal());</span>
-    }
+    private void tellRules() {
+<span class="fc" id="L106">        botPlayer.botSays(&quot;The game is simple. You and I will pick one of three hand signals (Paper,Rock or Scissors) at the same time.&quot;);</span>
+<span class="fc" id="L107">        botPlayer.botSays(&quot;Then we will revile our selected signal and see who wins&quot;);</span>
+<span class="fc" id="L108">        botPlayer.botSays(&quot;The winner is determined as following:&quot;);</span>
+<span class="fc" id="L109">        botPlayer.botSays(&quot;Paper beats (wraps) rock&quot;);</span>
+<span class="fc" id="L110">        botPlayer.botSays(&quot;Rock beats (blunts) scissors &quot;);</span>
+<span class="fc" id="L111">        botPlayer.botSays(&quot;Scissors beats (cuts) paper&quot;);</span>
+<span class="fc" id="L112">        botPlayer.botSays(&quot; &quot;);</span>
+<span class="fc" id="L113">        botPlayer.botSays(&quot;I hope that now you understand the game. Now let's play!&quot;);</span>
+<span class="fc" id="L114">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
